@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img
+        src="https://cdn.iconscout.com/icon/free/png-256/dog-2194-1131172.png"
+        class="me-2"
+        height="30"
+        alt="MDB Logo"
+        loading="lazy"
+      />
+      <small>Moonstone Dogs</small>
+    </a>
+
+    <div class="d-inline-flex align-items-center">
+
+      <div class="dropdown mx-3">
+        <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ breedValue }}
+        </a>
+        <ul class="dropdown-menu vh-100 overflow-auto">
+          <li *ngFor="let breed of breeds"><a class="dropdown-item" (click)="onBreedSelect($event)">{{ breed }}</a></li>
+        </ul>
+      </div>
+
+
+      <div class="dropdown mx-3">
+        <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ subValue }}
+        </a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let sub of subBreeds"><a class="dropdown-item" (click)="onSubBreedSelect($event)">{{ sub }}</a></li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-primary mx-3" [routerLink]="['/breed-details', selectedBreed, selectedSubBreed]">Search</button>
+
+    </div>
+  </div>
+</nav>

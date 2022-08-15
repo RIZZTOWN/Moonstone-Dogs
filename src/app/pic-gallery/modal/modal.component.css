@@ -1,0 +1,43 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+/* .modal-box {
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  width: 60vw;
+  padding: 16px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  border-radius: 5%;
+} */
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  border-radius: 5%;
+}
+
+.modal-box-actions {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.gallery-item {
+  width: 100%;
+  border-radius: 5%;
+}
