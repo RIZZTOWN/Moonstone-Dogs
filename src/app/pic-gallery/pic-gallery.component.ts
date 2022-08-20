@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FetchDogsService } from '../shared/fetchDogs.service';
 
 @Component({
   selector: 'app-pic-gallery',
@@ -9,10 +10,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 export class PicGalleryComponent implements OnInit, OnChanges {
   modalSource: string = '';
   dogPics = [];
-  @Input() breedP = '';
-  @Input() subP = '';
+  @Input() breedP: string = '';
+  @Input() subP: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private FetchDogsService: FetchDogsService) { }
 
   ngOnInit(): void {
     if (this.breedP === '' && this.subP === '') {
@@ -35,27 +36,17 @@ export class PicGalleryComponent implements OnInit, OnChanges {
   }
 
   private fetchRandomDogPics() {
-    this.http
-    .get<any>('https://dog.ceo/api/breeds/image/random/9')
+    this.FetchDogsService.fetchDogs()
     .subscribe(res => {
       this.dogPics = res.message;
     });
   }
 
   private fetchBreed() {
-    if (this.subP === 'Sub-Breed' || this.subP === '') {
-      this.http
-      .get<any>(`https://dog.ceo/api/breed/${this.breedP}/images/random/9`)
-      .subscribe(res => {
-        this.dogPics = res.message;
-      })
-    } else {
-      this.http
-      .get<any>(`https://dog.ceo/api/breed/${this.breedP}${this.subP}/images/random/9`)
-      .subscribe(res => {
-        this.dogPics = res.message;
-      })
-    }
+    this.FetchDogsService.fetchBreeds(this.breedP, this.subP)
+    .subscribe(res => {
+      this.dogPics = res.message;
+    })
   }
 
 }

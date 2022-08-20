@@ -40,6 +40,11 @@ export class HeaderComponent implements OnInit, OnChanges {
     })
   }
 
+  onClick() {
+    console.log('clicked Home btn')
+
+  }
+
   onBreedSelect(event: any) {
     this.selectedBreed = event.target.innerHTML;
     this.breedValue = event.target.innerHTML;
@@ -49,7 +54,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   onSubBreedSelect(event: any) {
-    this.selectedSubBreed = '/' + event.target.innerHTML;
+    this.selectedSubBreed = event.target.innerHTML;
     this.subValue = event.target.innerHTML;
   }
 
