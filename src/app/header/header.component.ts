@@ -41,8 +41,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   onClick() {
-    console.log('clicked Home btn')
-
+    console.log('clicked Home btn');
   }
 
   onBreedSelect(event: any) {
